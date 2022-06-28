@@ -4,8 +4,8 @@ import { sizes } from './sizes';
 
 const styles = StyleSheet.create({
   screen: {
-    paddingVertical: sizes['6xl'],
-    paddingHorizontal: sizes['3xl'],
+    paddingVertical: sizes['7xl'],
+    paddingHorizontal: sizes['5xl'],
     height: '100%',
     backgroundColor: palette.background,
   },
@@ -14,17 +14,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  seperator: {
+    marginVertical: sizes['7xl'],
+  },
   flex: {
     flex: 1,
   },
   tabBar: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    elevation: sizes.lg,
     backgroundColor: palette.white,
-    paddingVertical: sizes['7xl'],
+    paddingVertical: sizes['5xl'],
   },
   iconButton: {
+    justifyContent: 'center',
     borderRadius: 500,
     padding: sizes.lg,
   },

@@ -18,7 +18,7 @@ const TabBar: FC<BottomTabBarProps> = memo(
             name={isFocused ? sharp : outline}
             color={isFocused ? 'primaryFont' : undefined}
             variant={isGradient ? 'gradient' : undefined}
-            iconSize={isGradient ? 'sm' : 'lg'}
+            iconSize={isGradient ? 'sm' : 'md'}
             onPress={name ? () => navigation.navigate(name) : undefined}
           />
         );

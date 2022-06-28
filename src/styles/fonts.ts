@@ -13,7 +13,7 @@ export const fontSizes = {
 };
 
 export const fontFamilies = {
-  primary: 'Roboto',
+  primary: 'Roboto-Medium',
 };
 
 export type FontFamily = keyof typeof fontFamilies;

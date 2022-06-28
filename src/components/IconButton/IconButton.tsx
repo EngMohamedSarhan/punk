@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   ViewProps,
+  ViewStyle,
 } from 'react-native';
 import LinearGradient, {
   LinearGradientProps,
@@ -17,9 +18,9 @@ import styles from '../../styles/styles';
 import Icon, { IIconProps } from '../Icon/Icon';
 import Typography, { ITypographyProps } from '../Typography/Typography';
 
-export interface IIconButtonProps extends ViewProps {
+export interface IIconButtonProps extends ViewProps, ViewStyle {
   isMaterialIcon?: boolean;
-  variant?: 'standard' | 'elevated' | 'gradient';
+  variant?: 'standard' | 'square' | 'gradient';
   color?: Color;
   fontColor?: FontColor;
   icon?: IIconProps;
@@ -61,9 +62,12 @@ const IconButton: FC<IIconButtonProps> = forwardRef<View, IIconButtonProps>(
         {...props}
         ref={ref}
         style={[
+          styles.iconButton,
           {
-            ...(variant === 'elevated' && {
-              elevation: sizes.lg,
+            ...(variant === 'square' && {
+              backgroundColor: palette.white,
+              paddingHorizontal: sizes.xxl,
+              borderRadius: sizes.xxl,
               shadowRadius: sizes.sm,
               shadowOffset: {
                 width: sizes.xl,
@@ -71,7 +75,6 @@ const IconButton: FC<IIconButtonProps> = forwardRef<View, IIconButtonProps>(
               },
             }),
           },
-          styles.iconButton,
           props,
           style,
         ]}
