@@ -2,7 +2,7 @@
 
 This is a sample React-Native project of two screens. <br />
 This project is tested only on Android. <br />
-[Design](https://www.uplabs.com/posts/grocery-app-ios-mobile-ui-kits-food-delivery-app)
+The project is based on this [design](https://www.uplabs.com/posts/grocery-app-ios-mobile-ui-kits-food-delivery-app), also I don't have access to the design assets. <br />
 [API](https://punkapi.com/documentation/v2)
 
 ## Getting Started
