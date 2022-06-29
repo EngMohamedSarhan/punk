@@ -1,4 +1,5 @@
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
+import ProductScreen from '../screens/ProductScreen/ProductScreen';
 
 const screens = [
   {
@@ -7,7 +8,7 @@ const screens = [
   },
   {
     name: 'Product',
-    component: HomeScreen,
+    component: ProductScreen,
   },
 ];
 
