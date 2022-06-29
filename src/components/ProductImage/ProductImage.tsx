@@ -6,6 +6,7 @@ import {
   ViewProps,
   ViewStyle,
 } from 'react-native';
+
 import { palette } from '../../styles/palette';
 import styles from '../../styles/styles';
 

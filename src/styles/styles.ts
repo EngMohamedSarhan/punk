@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: sizes.lg,
   },
-  ProductImage: {
+  productCardImage: {
     alignSelf: 'center',
     width: 150,
     height: 150,

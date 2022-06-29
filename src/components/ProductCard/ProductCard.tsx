@@ -38,7 +38,7 @@ const ProductCard: FC<IProductCardProps> = memo(
               <Image
                 source={{ uri: image_url }}
                 resizeMode="contain"
-                style={styles.ProductImage}
+                style={styles.productCardImage}
               />
               <Typography
                 marginTop={sizes.lg}
