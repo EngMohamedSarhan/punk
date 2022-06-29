@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
-import { IBeer } from '../../constants/types';
+import { IProduct } from '../../constants/types';
 import axios from '../../scripts/axios';
 
-const useBeers = (setIsLoading: Dispatch<SetStateAction<boolean>>) => {
-  const [beers, setBeers] = useState<IBeer[]>([]);
+const useProducts = (setIsLoading: Dispatch<SetStateAction<boolean>>) => {
+  const [Products, setProducts] = useState<IProduct[]>([]);
   const page = useRef(0);
 
-  const getBeers = (isRefresh?: boolean) => {
+  const getProducts = (isRefresh?: boolean) => {
     if (isRefresh) {
       page.current = 1;
     } else {
@@ -17,15 +17,15 @@ const useBeers = (setIsLoading: Dispatch<SetStateAction<boolean>>) => {
       .get(`/beers?page=${page.current}&per_page=10`)
       .then(({ data }) => {
         if (page.current !== 1) {
-          setBeers(beers.concat(data));
+          setProducts(Products.concat(data));
         } else {
-          setBeers(data);
+          setProducts(data);
         }
       })
       .finally(() => setIsLoading(false));
   };
 
-  return { beers, getBeers };
+  return { Products, getProducts };
 };
 
-export default useBeers;
+export default useProducts;
