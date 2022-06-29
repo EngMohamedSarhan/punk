@@ -9,16 +9,26 @@ const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: palette.background,
   },
-
   horizontalContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'center',
   },
-  seperator: {
+  separator: {
     marginVertical: sizes['7xl'],
+  },
+  miniseparator: {
+    marginVertical: sizes.lg,
+  },
+  divider: {
+    width: sizes['5xl'],
+    height: sizes['5xl'],
   },
   flex: {
     flex: 1,
+  },
+  categoryTypography: {
+    alignItems: 'center',
+    alignSelf: 'flex-start',
   },
   tabBar: {
     flexDirection: 'row',
@@ -42,6 +52,28 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: sizes.lg,
+  },
+  beerImage: {
+    alignSelf: 'center',
+    width: 150,
+    height: 150,
+  },
+  beerCard: {
+    padding: sizes.xxl,
+    width: 200,
+    borderRadius: sizes['7xl'],
+    alignSelf: 'flex-start',
+    backgroundColor: palette.white,
+  },
+  beerButton: {
+    position: 'absolute',
+    marginRight: -sizes.xxl,
+    right: 0,
+    bottom: 7,
+    borderRadius: 0,
+    backgroundColor: palette.primary,
+    borderTopLeftRadius: sizes['3xl'],
+    borderBottomLeftRadius: sizes['3xl'],
   },
 });
 
