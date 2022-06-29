@@ -4,7 +4,7 @@ export interface INavigationProp {
   navigation: NavigationProp<any>;
 }
 
-export interface IBeer {
+export interface IProduct {
   id: number;
   name: string;
   description: string;

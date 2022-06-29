@@ -14,6 +14,7 @@ const Search: FC<ViewProps> = memo(({ style, ...props }) => (
   >
     <Input
       flex={1}
+      editable={false}
       paddingVertical={sizes.md}
       placeholder="Search Products"
       startAdornment={<IconButton name="search" color="dark" />}

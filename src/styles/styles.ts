@@ -3,6 +3,10 @@ import { palette } from './palette';
 import { sizes } from './sizes';
 
 const styles = StyleSheet.create({
+  screenPadding: {
+    paddingVertical: sizes['7xl'],
+    paddingHorizontal: sizes['5xl'],
+  },
   screen: {
     paddingVertical: sizes['7xl'],
     paddingHorizontal: sizes['5xl'],
@@ -11,7 +15,21 @@ const styles = StyleSheet.create({
   },
   horizontalContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
+  },
+  spaceBetween: {
+    justifyContent: 'space-between',
+  },
+  flexEnd: {
+    alignItems: 'flex-end',
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    position: 'absolute',
+    paddingVertical: sizes['7xl'],
+    paddingHorizontal: sizes['5xl'],
+    width: '100%',
+    zIndex: 2,
   },
   separator: {
     marginVertical: sizes['7xl'],
@@ -25,6 +43,11 @@ const styles = StyleSheet.create({
   },
   flex: {
     flex: 1,
+  },
+  starRating: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
   },
   categoryTypography: {
     alignItems: 'center',
@@ -41,6 +64,13 @@ const styles = StyleSheet.create({
     borderRadius: 500,
     padding: sizes.lg,
   },
+  smIconButton: {
+    width: 35,
+    height: 35,
+    padding: 0,
+    borderRadius: 50,
+    alignItems: 'center',
+  },
   gradientIconButton: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -53,19 +83,19 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: sizes.lg,
   },
-  beerImage: {
+  ProductImage: {
     alignSelf: 'center',
     width: 150,
     height: 150,
   },
-  beerCard: {
+  productCard: {
     padding: sizes.xxl,
     width: 200,
     borderRadius: sizes['7xl'],
     alignSelf: 'flex-start',
     backgroundColor: palette.white,
   },
-  beerButton: {
+  ProductButton: {
     position: 'absolute',
     marginRight: -sizes.xxl,
     right: 0,
@@ -74,6 +104,16 @@ const styles = StyleSheet.create({
     backgroundColor: palette.primary,
     borderTopLeftRadius: sizes['3xl'],
     borderBottomLeftRadius: sizes['3xl'],
+  },
+  quantityContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: sizes['3xl'],
+  },
+  productImage: {
+    width: '100%',
+    height: '80%',
+    marginBottom: -sizes.lg,
   },
 });
 

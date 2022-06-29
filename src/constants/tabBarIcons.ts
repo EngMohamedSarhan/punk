@@ -14,7 +14,6 @@ export const tabBarIcons: ITabBarIcon[] = [
   {
     sharp: 'ios-heart-sharp',
     outline: 'ios-heart-outline',
-    name: 'Product',
   },
   {
     outline: 'scan',
