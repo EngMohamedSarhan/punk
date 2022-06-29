@@ -7,10 +7,10 @@ import {
   FontSize,
   fontSizes,
 } from '../../styles/fonts';
-import { FontColor, palette } from '../../styles/palette';
+import { Color, palette } from '../../styles/palette';
 
 export interface ITypographyProps extends TextProps, TextStyle {
-  fontColor?: FontColor;
+  fontColor?: Color;
   fontFamily?: FontFamily;
   size?: FontSize;
 }

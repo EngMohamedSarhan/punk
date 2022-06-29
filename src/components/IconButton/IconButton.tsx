@@ -12,7 +12,7 @@ import LinearGradient, {
   LinearGradientProps,
 } from 'react-native-linear-gradient';
 
-import { Color, FontColor, palette } from '../../styles/palette';
+import { Color, palette } from '../../styles/palette';
 import { IconSize, sizes } from '../../styles/sizes';
 import styles from '../../styles/styles';
 import Icon, { IIconProps } from '../Icon/Icon';
@@ -22,7 +22,7 @@ export interface IIconButtonProps extends ViewProps, ViewStyle {
   isMaterialIcon?: boolean;
   variant?: 'standard' | 'square' | 'gradient';
   color?: Color;
-  fontColor?: FontColor;
+  fontColor?: Color;
   icon?: IIconProps;
   iconSize?: IconSize;
   name?: string;

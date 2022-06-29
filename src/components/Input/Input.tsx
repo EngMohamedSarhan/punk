@@ -2,7 +2,7 @@ import React, { forwardRef, ReactNode } from 'react';
 import { TextInput, TextInputProps, View, ViewStyle } from 'react-native';
 
 import { fontFamilies, FontFamily, fontSizes } from '../../styles/fonts';
-import { Color, FontColor, palette } from '../../styles/palette';
+import { Color, palette } from '../../styles/palette';
 import { sizes } from '../../styles/sizes';
 
 export interface IInputProps extends TextInputProps, ViewStyle {
@@ -13,7 +13,7 @@ export interface IInputProps extends TextInputProps, ViewStyle {
   marginTop?: number;
   paddingVertical?: number;
   color?: Color;
-  fontColor?: FontColor;
+  fontColor?: Color;
   fontSize?: number;
   fontFamily?: FontFamily;
   placeholderFontSize?: number;

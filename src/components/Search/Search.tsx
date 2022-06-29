@@ -10,7 +10,7 @@ import Input from '../Input/Input';
 const Search: FC<ViewProps> = memo(({ style, ...props }) => (
   <View
     {...props}
-    style={[styles.horizontalContainer, styles.seperator, style]}
+    style={[styles.horizontalContainer, styles.separator, style]}
   >
     <Input
       flex={1}
