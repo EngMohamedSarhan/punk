@@ -2,7 +2,7 @@ import { createContext, Dispatch, SetStateAction } from 'react';
 import { IProduct } from '../constants/types';
 
 export interface IProductContext {
-  Product?: IProduct;
+  product?: IProduct;
   setProduct: Dispatch<SetStateAction<IProduct | undefined>>;
 }
 

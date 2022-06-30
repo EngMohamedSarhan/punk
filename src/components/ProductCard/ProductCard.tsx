@@ -8,6 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { PRODUCT_SCREEN_NAME } from '../../constants/screens';
 import { IProduct } from '../../constants/types';
 import { DOLLAR_UNICODE } from '../../constants/unicodes';
 import ProductContext, { IProductContext } from '../../context/ProductContext';
@@ -17,17 +18,17 @@ import IconButton from '../IconButton/IconButton';
 import Typography from '../Typography/Typography';
 
 export interface IProductCardProps extends ViewProps, ViewStyle {
-  Product: IProduct;
+  product: IProduct;
   navigation: NavigationProp<any>;
 }
 
 const ProductCard: FC<IProductCardProps> = memo(
-  ({ Product, navigation, style, ...props }) => {
-    const { image_url, name, ebc } = Product;
+  ({ product, navigation, style, ...props }) => {
+    const { image_url, name, ebc } = product;
 
     const handlePress = (context: IProductContext | null) => {
-      context?.setProduct(Product);
-      navigation.navigate('Product');
+      context?.setProduct(product);
+      navigation.navigate(PRODUCT_SCREEN_NAME);
     };
 
     return (

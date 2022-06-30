@@ -1,13 +1,17 @@
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import ProductScreen from '../screens/ProductScreen/ProductScreen';
 
+export const HOME_SCREEN_NAME = 'Home';
+
+export const PRODUCT_SCREEN_NAME = 'Product';
+
 const screens = [
   {
-    name: 'Home',
+    name: HOME_SCREEN_NAME,
     component: HomeScreen,
   },
   {
-    name: 'Product',
+    name: PRODUCT_SCREEN_NAME,
     component: ProductScreen,
   },
 ];

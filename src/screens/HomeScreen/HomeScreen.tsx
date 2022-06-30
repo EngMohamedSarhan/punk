@@ -24,7 +24,7 @@ const HomeScreen: FC<INavigationProp> = memo(({ navigation }) => {
   const renderSeparator = () => <View style={styles.divider} />;
 
   const renderItem = ({ item }: ListRenderItemInfo<IProduct>) => (
-    <ProductCard Product={item} navigation={navigation} />
+    <ProductCard product={item} navigation={navigation} />
   );
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

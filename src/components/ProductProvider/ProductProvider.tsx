@@ -7,10 +7,10 @@ export interface IProductProviderProps {
 }
 
 const ProductProvider: FC<IProductProviderProps> = memo(({ children }) => {
-  const [Product, setProduct] = useState<IProduct>();
+  const [product, setProduct] = useState<IProduct>();
 
   return (
-    <ProductContext.Provider value={{ Product, setProduct }}>
+    <ProductContext.Provider value={{ product, setProduct }}>
       {children}
     </ProductContext.Provider>
   );

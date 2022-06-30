@@ -16,7 +16,7 @@ import styles from '../../styles/styles';
 const ProductScreen: FC<INavigationProp> = memo(({ navigation }) => (
   <ProductContext.Consumer>
     {(context) => {
-      const { image_url, name, description, ebc } = context!.Product!;
+      const { image_url, name, description, ebc } = context!.product!;
 
       return (
         <Fragment>
