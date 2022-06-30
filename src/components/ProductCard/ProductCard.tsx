@@ -1,5 +1,5 @@
 import { NavigationProp } from '@react-navigation/native';
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useContext } from 'react';
 import {
   Image,
   TouchableWithoutFeedback,
@@ -11,7 +11,7 @@ import {
 import { PRODUCT_SCREEN_NAME } from '../../constants/screens';
 import { IProduct } from '../../constants/types';
 import { DOLLAR_UNICODE } from '../../constants/unicodes';
-import ProductContext, { IProductContext } from '../../context/ProductContext';
+import ProductContext from '../../context/ProductContext';
 import { sizes } from '../../styles/sizes';
 import styles from '../../styles/styles';
 import IconButton from '../IconButton/IconButton';
@@ -25,52 +25,49 @@ export interface IProductCardProps extends ViewProps, ViewStyle {
 const ProductCard: FC<IProductCardProps> = memo(
   ({ product, navigation, style, ...props }) => {
     const { image_url, name, ebc } = product;
+    const { setProduct } = useContext(ProductContext)!;
 
-    const handlePress = (context: IProductContext | null) => {
-      context?.setProduct(product);
+    const handlePress = () => {
+      setProduct(product);
       navigation.navigate(PRODUCT_SCREEN_NAME);
     };
 
     return (
-      <ProductContext.Consumer>
-        {(context) => (
-          <TouchableWithoutFeedback onPress={() => handlePress(context)}>
-            <View {...props} style={[style, styles.productCard, props]}>
-              <Image
-                source={{ uri: image_url }}
-                resizeMode="contain"
-                style={styles.productCardImage}
-              />
-              <Typography
-                marginTop={sizes.lg}
-                fontColor="primaryFont"
-                fontWeight="800"
-                numberOfLines={1}
-              >
-                {name}
-              </Typography>
-              <Typography size="sm" marginTop={sizes.md}>
-                Beer
-              </Typography>
-              <Typography
-                fontColor="primary"
-                marginTop={sizes.md}
-                fontWeight="800"
-                letterSpacing={-0.5}
-              >
-                {`${DOLLAR_UNICODE}${(ebc || 20).toFixed(2)}`}
-              </Typography>
-              <IconButton
-                isMaterialIcon
-                name="add"
-                iconSize="md"
-                color="white"
-                style={styles.ProductButton}
-              />
-            </View>
-          </TouchableWithoutFeedback>
-        )}
-      </ProductContext.Consumer>
+      <TouchableWithoutFeedback onPress={handlePress}>
+        <View {...props} style={[style, styles.productCard, props]}>
+          <Image
+            source={{ uri: image_url }}
+            resizeMode="contain"
+            style={styles.productCardImage}
+          />
+          <Typography
+            marginTop={sizes.lg}
+            fontColor="primaryFont"
+            fontWeight="800"
+            numberOfLines={1}
+          >
+            {name}
+          </Typography>
+          <Typography size="sm" marginTop={sizes.md}>
+            Beer
+          </Typography>
+          <Typography
+            fontColor="primary"
+            marginTop={sizes.md}
+            fontWeight="800"
+            letterSpacing={-0.5}
+          >
+            {`${DOLLAR_UNICODE}${(ebc || 20).toFixed(2)}`}
+          </Typography>
+          <IconButton
+            isMaterialIcon
+            name="add"
+            iconSize="md"
+            color="white"
+            style={styles.ProductButton}
+          />
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 );
