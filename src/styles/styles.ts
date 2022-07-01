@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   notificationsContainer: {
     position: 'absolute',
-    zIndex: 1,
+    zIndex: 3,
     width: '100%',
   },
   separator: {
