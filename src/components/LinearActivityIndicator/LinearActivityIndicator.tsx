@@ -14,6 +14,7 @@ export interface ILinearActivityIndicatorProps extends ViewProps, ViewStyle {
   secondaryColor?: Color;
   duration?: number;
   indicatorWidth?: string | number;
+  indicatorFactor?: number;
 }
 
 const LinearActivityIndicator: FC<ILinearActivityIndicatorProps> = memo(
@@ -27,6 +28,7 @@ const LinearActivityIndicator: FC<ILinearActivityIndicatorProps> = memo(
     secondaryColor = 'light',
     height = 5,
     indicatorWidth = '40%',
+    indicatorFactor = 0.4,
     duration = 1000,
     ...props
   }) => {
@@ -34,7 +36,7 @@ const LinearActivityIndicator: FC<ILinearActivityIndicatorProps> = memo(
     const { width: toValue } = useWindowDimensions();
 
     const handleAnimation = () => {
-      translateX.setValue(-toValue * 0.4);
+      translateX.setValue(-toValue * indicatorFactor);
       Animated.timing(translateX, {
         toValue,
         duration,
