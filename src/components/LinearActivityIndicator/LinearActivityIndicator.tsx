@@ -34,7 +34,7 @@ const LinearActivityIndicator: FC<ILinearActivityIndicatorProps> = memo(
     const { width: toValue } = useWindowDimensions();
 
     const handleAnimation = () => {
-      translateX.setValue(-toValue);
+      translateX.setValue(-toValue * 0.4);
       Animated.timing(translateX, {
         toValue,
         duration,
