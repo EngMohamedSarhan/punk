@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
     paddingVertical: sizes['7xl'],
     paddingHorizontal: sizes['5xl'],
   },
+  screenHorizontalPadding: {
+    paddingHorizontal: sizes['5xl'],
+  },
   screen: {
     paddingVertical: sizes['7xl'],
     paddingHorizontal: sizes['5xl'],
@@ -31,11 +34,19 @@ const styles = StyleSheet.create({
     width: '100%',
     zIndex: 2,
   },
+  notificationsContainer: {
+    position: 'absolute',
+    zIndex: 1,
+    width: '100%',
+  },
   separator: {
     marginVertical: sizes['7xl'],
   },
-  miniseparator: {
+  miniSeparator: {
     marginVertical: sizes.lg,
+  },
+  hugeVerticalPadding: {
+    paddingVertical: sizes['11xl'],
   },
   divider: {
     width: sizes['5xl'],
@@ -95,7 +106,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     backgroundColor: palette.white,
   },
-  ProductButton: {
+  productButton: {
     position: 'absolute',
     marginRight: -sizes.xxl,
     right: 0,

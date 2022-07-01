@@ -1,10 +1,11 @@
-import React, { FC, Fragment, memo } from 'react';
+import React, { FC, memo } from 'react';
 import { ScrollView, View } from 'react-native';
 
 import ProductAction from '../../components/ProductAction/ProductAction';
 import ProductHeader from '../../components/ProductHeader/ProductHeader';
 import ProductImage from '../../components/ProductImage/ProductImage';
 import ProductQuantity from '../../components/ProductQuantity/ProductQuantity';
+import ScreenLayout from '../../components/ScreenLayout/ScreenLayout';
 import StarRating from '../../components/StarRating/StarRating';
 import Typography from '../../components/Typography/Typography';
 import { INavigationProp } from '../../constants/types';
@@ -19,7 +20,7 @@ const ProductScreen: FC<INavigationProp> = memo(({ navigation }) => (
       const { image_url, name, description, ebc } = context!.product!;
 
       return (
-        <Fragment>
+        <ScreenLayout>
           <ProductHeader navigation={navigation} />
           <ScrollView style={{ backgroundColor: palette.background }}>
             <ProductImage uri={image_url} />
@@ -42,14 +43,14 @@ const ProductScreen: FC<INavigationProp> = memo(({ navigation }) => (
               <Typography
                 size="sm"
                 lineHeight={20}
-                style={styles.miniseparator}
+                style={styles.miniSeparator}
               >
                 {description}
               </Typography>
-              <ProductAction price={ebc} style={styles.miniseparator} />
+              <ProductAction price={ebc} style={styles.miniSeparator} />
             </View>
           </ScrollView>
-        </Fragment>
+        </ScreenLayout>
       );
     }}
   </ProductContext.Consumer>

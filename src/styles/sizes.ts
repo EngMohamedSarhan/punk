@@ -13,6 +13,8 @@ export const sizes = {
   '7xl': 22,
   '8xl': 24,
   '9xl': 26,
+  '10xl': 28,
+  '11xl': 30,
 };
 
 export const iconSizes = {

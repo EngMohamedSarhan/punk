@@ -1,4 +1,3 @@
-import { NavigationProp } from '@react-navigation/native';
 import React, { FC, memo, useContext } from 'react';
 import {
   Image,
@@ -9,23 +8,31 @@ import {
 } from 'react-native';
 
 import { PRODUCT_SCREEN_NAME } from '../../constants/screens';
-import { IProduct } from '../../constants/types';
+import { INavigationProp, IProduct } from '../../constants/types';
 import { DOLLAR_UNICODE } from '../../constants/unicodes';
+import NotificationContext from '../../context/NotificationContext';
 import ProductContext from '../../context/ProductContext';
 import { sizes } from '../../styles/sizes';
 import styles from '../../styles/styles';
 import IconButton from '../IconButton/IconButton';
 import Typography from '../Typography/Typography';
 
-export interface IProductCardProps extends ViewProps, ViewStyle {
+export interface IProductCardProps
+  extends ViewProps,
+    ViewStyle,
+    INavigationProp {
   product: IProduct;
-  navigation: NavigationProp<any>;
 }
 
 const ProductCard: FC<IProductCardProps> = memo(
   ({ product, navigation, style, ...props }) => {
     const { image_url, name, ebc } = product;
+    const { pushNotification } = useContext(NotificationContext)!;
     const { setProduct } = useContext(ProductContext)!;
+
+    const handleCart = () => {
+      pushNotification('Added to cart successfully.');
+    };
 
     const handlePress = () => {
       setProduct(product);
@@ -64,7 +71,8 @@ const ProductCard: FC<IProductCardProps> = memo(
             name="add"
             iconSize="md"
             color="white"
-            style={styles.ProductButton}
+            style={styles.productButton}
+            onPress={handleCart}
           />
         </View>
       </TouchableWithoutFeedback>

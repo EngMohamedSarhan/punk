@@ -1,10 +1,11 @@
-import React, { FC, Fragment, memo, useEffect, useState } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 import { ListRenderItemInfo, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
 import CategoryTypography from '../../components/CategoryTypography/CategoryTypography';
 import LinearActivityIndicator from '../../components/LinearActivityIndicator/LinearActivityIndicator';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import ScreenLayout from '../../components/ScreenLayout/ScreenLayout';
 import Search from '../../components/Search/Search';
 import User from '../../components/User/User';
 import { profileImg } from '../../constants/images';
@@ -15,7 +16,8 @@ import styles from '../../styles/styles';
 const HomeScreen: FC<INavigationProp> = memo(({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { products, getProducts } = useProducts(setIsLoading);
-  const keyExtractor = (item: IProduct) => item.id.toString();
+
+  const handleKeyExtractor = (item: IProduct) => item.id.toString();
 
   const handleProducts = () => getProducts();
 
@@ -29,7 +31,7 @@ const HomeScreen: FC<INavigationProp> = memo(({ navigation }) => {
   useEffect(handleProducts, []);
 
   return (
-    <Fragment>
+    <ScreenLayout>
       {isLoading && <LinearActivityIndicator position="absolute" />}
       <View style={styles.screen}>
         <User name="mohamed khaled" image={profileImg} />
@@ -40,14 +42,14 @@ const HomeScreen: FC<INavigationProp> = memo(({ navigation }) => {
           showsHorizontalScrollIndicator={false}
           snapToAlignment="end"
           data={products}
-          keyExtractor={keyExtractor}
+          keyExtractor={handleKeyExtractor}
           renderItem={renderItem}
           ItemSeparatorComponent={renderSeparator}
-          contentContainerStyle={styles.miniseparator}
+          contentContainerStyle={styles.miniSeparator}
           onEndReached={handleProducts}
         />
       </View>
-    </Fragment>
+    </ScreenLayout>
   );
 });
 
