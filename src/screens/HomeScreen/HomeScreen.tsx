@@ -1,5 +1,5 @@
 import React, { FC, Fragment, memo, useEffect, useState } from 'react';
-import { ListRenderItemInfo, RefreshControl, View } from 'react-native';
+import { ListRenderItemInfo, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
 import CategoryTypography from '../../components/CategoryTypography/CategoryTypography';
@@ -10,13 +10,11 @@ import User from '../../components/User/User';
 import { profileImg } from '../../constants/images';
 import { INavigationProp, IProduct } from '../../constants/types';
 import useProducts from '../../hooks/useProducts/useProducts';
-import { palette } from '../../styles/palette';
 import styles from '../../styles/styles';
 
 const HomeScreen: FC<INavigationProp> = memo(({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const { Products, getProducts } = useProducts(setIsLoading);
-
+  const { products, getProducts } = useProducts(setIsLoading);
   const keyExtractor = (item: IProduct) => item.id.toString();
 
   const handleProducts = () => getProducts();
@@ -41,12 +39,9 @@ const HomeScreen: FC<INavigationProp> = memo(({ navigation }) => {
           horizontal
           showsHorizontalScrollIndicator={false}
           snapToAlignment="end"
-          data={Products}
+          data={products}
           keyExtractor={keyExtractor}
           renderItem={renderItem}
-          refreshControl={
-            <RefreshControl colors={[palette.primary]} refreshing={isLoading} />
-          }
           ItemSeparatorComponent={renderSeparator}
           contentContainerStyle={styles.miniseparator}
           onEndReached={handleProducts}
