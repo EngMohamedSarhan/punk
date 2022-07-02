@@ -55,7 +55,7 @@ const Button: FC<IButtonProps> = memo(
     alignItems = 'center',
     justifyContent = 'center',
     fontColor = 'white',
-    fontSize = 'sm',
+    fontSize = 'lg',
     textTransform,
     borderRadius = sizes['9xl'],
     ...props

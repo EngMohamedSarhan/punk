@@ -38,7 +38,6 @@ const ProductAction: FC<IProductActionProps> = memo(
       </View>
       <Button
         title="Add to Cart"
-        fontSize="lg"
         endAdornment={
           <Icon
             isMaterialIcon

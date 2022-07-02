@@ -1,6 +1,7 @@
 import React, { FC, memo, useContext } from 'react';
 import { FlatList, ListRenderItemInfo, View } from 'react-native';
 
+import CartFooter from '../../components/CartFooter/CartFooter';
 import Error from '../../components/Error/Error';
 import HeaderButtons from '../../components/HeaderButtons/HeaderButtons';
 import ScreenLayout from '../../components/ScreenLayout/ScreenLayout';
@@ -18,6 +19,8 @@ const CartScreen: FC<INavigationProp> = memo(({ navigation }) => {
   const renderSeparator = () => <View style={styles.divider} />;
 
   const renderEmpty = () => <Error title=" Your Cart is Empty!" />;
+
+  const renderFooter = () => <CartFooter style={[styles.screenPadding]} />;
 
   const renderItem = (item: ListRenderItemInfo<ICartItem>) => (
     <SwipeableCartItem
@@ -37,6 +40,7 @@ const CartScreen: FC<INavigationProp> = memo(({ navigation }) => {
         ItemSeparatorComponent={renderSeparator}
         renderItem={renderItem}
         ListEmptyComponent={renderEmpty}
+        ListFooterComponent={renderFooter}
         contentContainerStyle={[
           styles.screenHeaderPadding,
           styles.screenVerticalPadding,
