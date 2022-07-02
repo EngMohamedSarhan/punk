@@ -1,8 +1,11 @@
 import React, { FC, memo, useContext } from 'react';
 import { Image, View, ViewProps, ViewStyle } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { PRODUCT_SCREEN_NAME } from '../../constants/screens';
 
-import { ICartItem } from '../../constants/types';
+import { ICartItem, INavigationProp } from '../../constants/types';
 import CartContext from '../../context/CartContext';
+import ProductContext from '../../context/ProductContext';
 import { palette } from '../../styles/palette';
 import { sizes } from '../../styles/sizes';
 import styles from '../../styles/styles';
@@ -13,7 +16,7 @@ import {
 } from '../ProductQuantity/ProductQuantity';
 import Typography from '../Typography/Typography';
 
-export interface ICartItemProps extends ViewProps, ViewStyle {
+export interface ICartItemProps extends ViewProps, ViewStyle, INavigationProp {
   item: ICartItem;
   index: number;
   category?: string;
@@ -24,16 +27,23 @@ const CartItem: FC<ICartItemProps> = memo(
     item,
     index,
     style,
+    navigation,
     category = 'Beer',
     backgroundColor = palette.background,
     ...props
   }) => {
     const { name, quantity, image_url } = item;
+    const { setProduct } = useContext(ProductContext)!;
     const { handleIncrement, handleDecrement } = useContext(CartContext)!;
 
     const handleIncPress = () => handleIncrement(index);
 
     const handleDecPress = () => handleDecrement(index);
+
+    const handleNavigation = () => {
+      setProduct(item);
+      navigation.navigate(PRODUCT_SCREEN_NAME);
+    };
 
     return (
       <View
@@ -64,11 +74,13 @@ const CartItem: FC<ICartItemProps> = memo(
             <Typography fontColor="black">{quantity}</Typography>
             <IconButton {...decButtonProps} onPress={handleDecPress} />
           </View>
-          <Image
-            source={{ uri: image_url }}
-            resizeMode="contain"
-            style={styles.cartImage}
-          />
+          <TouchableWithoutFeedback onPress={handleNavigation}>
+            <Image
+              source={{ uri: image_url }}
+              resizeMode="contain"
+              style={styles.cartImage}
+            />
+          </TouchableWithoutFeedback>
         </View>
       </View>
     );

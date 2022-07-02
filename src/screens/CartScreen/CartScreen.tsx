@@ -22,6 +22,7 @@ const CartScreen: FC<INavigationProp> = memo(({ navigation }) => {
   const renderItem = (item: ListRenderItemInfo<ICartItem>) => (
     <SwipeableCartItem
       {...item}
+      navigation={navigation}
       paddingVertical={sizes.lg}
       style={styles.screenHorizontalPadding}
     />
