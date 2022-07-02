@@ -7,6 +7,7 @@ export interface ICartContext {
   removeCart(id: number): void;
   incQuantity(id: number): void;
   decQuantity(id: number): void;
+  handleRemove(i: number): void;
   handleIncrement(i: number): void;
   handleDecrement(i: number): void;
 }

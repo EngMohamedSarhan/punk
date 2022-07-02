@@ -11,6 +11,7 @@ export const palette = {
   darkGreen: '#008F95',
   gray: '#ECECEC',
   dark: '#939393',
+  error: '#C62828',
   primaryFont: '#090D31',
   secondaryFont: '#B4B4B5',
 };

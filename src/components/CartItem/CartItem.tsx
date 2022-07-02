@@ -1,8 +1,9 @@
 import React, { FC, memo, useContext } from 'react';
-import { Image, View, ViewProps } from 'react-native';
+import { Image, View, ViewProps, ViewStyle } from 'react-native';
 
 import { ICartItem } from '../../constants/types';
 import CartContext from '../../context/CartContext';
+import { palette } from '../../styles/palette';
 import { sizes } from '../../styles/sizes';
 import styles from '../../styles/styles';
 import IconButton from '../IconButton/IconButton';
@@ -12,14 +13,21 @@ import {
 } from '../ProductQuantity/ProductQuantity';
 import Typography from '../Typography/Typography';
 
-export interface ICartItemProps extends ViewProps {
+export interface ICartItemProps extends ViewProps, ViewStyle {
   item: ICartItem;
   index: number;
   category?: string;
 }
 
 const CartItem: FC<ICartItemProps> = memo(
-  ({ item, index, category = 'Beer', style, ...props }) => {
+  ({
+    item,
+    index,
+    style,
+    category = 'Beer',
+    backgroundColor = palette.background,
+    ...props
+  }) => {
     const { name, quantity, image_url } = item;
     const { handleIncrement, handleDecrement } = useContext(CartContext)!;
 
@@ -30,7 +38,12 @@ const CartItem: FC<ICartItemProps> = memo(
     return (
       <View
         {...props}
-        style={[styles.horizontalContainer, styles.spaceBetween, style]}
+        style={[
+          styles.horizontalContainer,
+          styles.spaceBetween,
+          { backgroundColor },
+          style,
+        ]}
       >
         <View style={[styles.flex, { marginRight: sizes.md }]}>
           <Typography fontColor="primaryFont">{name}</Typography>

@@ -1,11 +1,12 @@
 import React, { FC, memo, useContext } from 'react';
 import { FlatList, ListRenderItemInfo, View } from 'react-native';
 
-import CartItem from '../../components/CartItem/CartItem';
 import HeaderButtons from '../../components/HeaderButtons/HeaderButtons';
 import ScreenLayout from '../../components/ScreenLayout/ScreenLayout';
+import SwipeableCartItem from '../../components/SwipeableCartItem/SwipeableCartItem';
 import { ICartItem, INavigationProp } from '../../constants/types';
 import CartContext from '../../context/CartContext';
+import { sizes } from '../../styles/sizes';
 import styles from '../../styles/styles';
 
 const CartScreen: FC<INavigationProp> = memo(({ navigation }) => {
@@ -16,7 +17,11 @@ const CartScreen: FC<INavigationProp> = memo(({ navigation }) => {
   const renderSeparator = () => <View style={styles.divider} />;
 
   const renderItem = (item: ListRenderItemInfo<ICartItem>) => (
-    <CartItem {...item} />
+    <SwipeableCartItem
+      {...item}
+      paddingVertical={sizes.lg}
+      style={styles.screenHorizontalPadding}
+    />
   );
 
   return (
@@ -28,8 +33,8 @@ const CartScreen: FC<INavigationProp> = memo(({ navigation }) => {
         ItemSeparatorComponent={renderSeparator}
         renderItem={renderItem}
         contentContainerStyle={[
-          styles.screenPadding,
           styles.screenHeaderPadding,
+          styles.screenVerticalPadding,
         ]}
       />
     </ScreenLayout>

@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
   screenHorizontalPadding: {
     paddingHorizontal: sizes['5xl'],
   },
+  screenVerticalPadding: {
+    paddingVertical: sizes['7xl'],
+  },
   horizontalContainer: {
     flexDirection: 'row',
   },
@@ -34,6 +37,9 @@ const styles = StyleSheet.create({
   },
   center: {
     alignItems: 'center',
+  },
+  centerContent: {
+    justifyContent: 'center',
   },
   headerContainer: {
     flexDirection: 'row',
@@ -65,7 +71,6 @@ const styles = StyleSheet.create({
   divider: {
     height: 1,
     backgroundColor: palette.gray,
-    marginVertical: sizes.lg,
   },
   flex: {
     flex: 1,

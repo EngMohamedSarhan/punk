@@ -26,7 +26,7 @@ export interface ISnackBarProps extends ViewProps {
 const SnackBar: FC<ISnackBarProps> = memo(
   ({
     animationDuration = 300,
-    duration = 1000,
+    duration = 2000,
     isOpen,
     text,
     onClose,

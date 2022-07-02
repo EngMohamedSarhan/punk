@@ -91,6 +91,7 @@ const CartProvider: FC<ICartProviderProps> = memo(({ children }) => {
         removeCart,
         incQuantity,
         decQuantity,
+        handleRemove,
         handleIncrement,
         handleDecrement,
       }}
