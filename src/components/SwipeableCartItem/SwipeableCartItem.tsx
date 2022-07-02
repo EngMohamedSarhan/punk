@@ -34,7 +34,7 @@ const SwipeableCartItem: FC<ICartItemProps> = memo(({ index, ...props }) => {
         onSwipeableWillOpen={handleAnimation}
       >
         <Collapsible collapsed={isCollapsed} onAnimationEnd={handleDelete}>
-          <CartItem index={index} {...props} />
+          <CartItem index={index} handleDelete={handleAnimation} {...props} />
         </Collapsible>
       </Swipeable>
     </GestureHandlerRootView>

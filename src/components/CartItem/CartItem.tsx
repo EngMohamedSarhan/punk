@@ -20,6 +20,7 @@ export interface ICartItemProps extends ViewProps, ViewStyle, INavigationProp {
   item: ICartItem;
   index: number;
   category?: string;
+  handleDelete?(): void;
 }
 
 const CartItem: FC<ICartItemProps> = memo(
@@ -30,6 +31,7 @@ const CartItem: FC<ICartItemProps> = memo(
     navigation,
     category = 'Beer',
     backgroundColor = palette.background,
+    handleDelete,
     ...props
   }) => {
     const { name, quantity, image_url } = item;
@@ -38,7 +40,13 @@ const CartItem: FC<ICartItemProps> = memo(
 
     const handleIncPress = () => handleIncrement(index);
 
-    const handleDecPress = () => handleDecrement(index);
+    const handleDecPress = () => {
+      if (quantity === 1 && handleDelete) {
+        handleDelete();
+      } else {
+        handleDecrement(index);
+      }
+    };
 
     const handleNavigation = () => {
       setProduct(item);
@@ -61,7 +69,6 @@ const CartItem: FC<ICartItemProps> = memo(
             {category}
           </Typography>
         </View>
-
         <View style={styles.horizontalContainer}>
           <View
             style={[
