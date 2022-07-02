@@ -1,5 +1,6 @@
-import React, { FC, memo, useContext } from 'react';
+import React, { FC, memo, useContext, useState } from 'react';
 import { Animated } from 'react-native';
+import Collapsible from 'react-native-collapsible';
 import {
   GestureHandlerRootView,
   Swipeable,
@@ -15,10 +16,14 @@ export interface ISwipeableCartItemProps extends ICartItemProps {
 
 const SwipeableCartItem: FC<ICartItemProps> = memo(({ index, ...props }) => {
   const { handleRemove } = useContext(CartContext)!;
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
   const renderDeleteButton = (
     prog: Animated.AnimatedInterpolation,
     drag: Animated.AnimatedInterpolation
   ) => <SwipeableDeleteAction iconStartX={-60} dragAnimatedValue={drag} />;
+
+  const handleAnimation = () => setIsCollapsed(true);
 
   const handleDelete = () => handleRemove(index);
 
@@ -26,9 +31,11 @@ const SwipeableCartItem: FC<ICartItemProps> = memo(({ index, ...props }) => {
     <GestureHandlerRootView>
       <Swipeable
         renderRightActions={renderDeleteButton}
-        onSwipeableWillOpen={handleDelete}
+        onSwipeableWillOpen={handleAnimation}
       >
-        <CartItem index={index} {...props} />
+        <Collapsible collapsed={isCollapsed} onAnimationEnd={handleDelete}>
+          <CartItem index={index} {...props} />
+        </Collapsible>
       </Swipeable>
     </GestureHandlerRootView>
   );
