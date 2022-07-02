@@ -22,4 +22,4 @@ yarn run android
 ![Home](./screenshots/Capture.PNG)
 ![SnackBar](./screenshots/Capture-1.PNG)
 ![Product](./screenshots/Capture-2.PNG)
-![Cart](./screenshots/Capture-3.PNG)
+![Cart](./screenshots/Capture-3.png)
