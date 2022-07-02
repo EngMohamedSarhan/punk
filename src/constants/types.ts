@@ -15,3 +15,7 @@ export interface IProduct {
   target_og: number;
   ebc?: number;
 }
+
+export interface ICartItem extends IProduct {
+  quantity: number;
+}
