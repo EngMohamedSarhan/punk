@@ -150,6 +150,10 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
+  emptyCartImage: {
+    width: 250,
+    height: 250,
+  },
 });
 
 export default styles;
