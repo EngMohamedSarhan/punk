@@ -21,7 +21,7 @@ const HomeScreen: FC<INavigationProp> = memo(({ navigation }) => {
 
   const handleProducts = () => getProducts();
 
-  const renderSeparator = () => <View style={styles.divider} />;
+  const renderSeparator = () => <View style={styles.square} />;
 
   const renderItem = ({ item }: ListRenderItemInfo<IProduct>) => (
     <ProductCard product={item} navigation={navigation} />

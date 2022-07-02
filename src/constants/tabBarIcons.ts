@@ -1,3 +1,5 @@
+import { CART_SCREEN_NAME, HOME_SCREEN_NAME } from './screens';
+
 export interface ITabBarIcon {
   outline: string;
   sharp?: string;
@@ -9,7 +11,7 @@ export const tabBarIcons: ITabBarIcon[] = [
   {
     sharp: 'home-sharp',
     outline: 'home-outline',
-    name: 'Home',
+    name: HOME_SCREEN_NAME,
   },
   {
     sharp: 'ios-heart-sharp',
@@ -22,6 +24,7 @@ export const tabBarIcons: ITabBarIcon[] = [
   {
     sharp: 'cart-sharp',
     outline: 'cart-outline',
+    name: CART_SCREEN_NAME,
   },
   {
     sharp: 'person-circle-sharp',

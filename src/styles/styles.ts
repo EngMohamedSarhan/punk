@@ -3,18 +3,25 @@ import { palette } from './palette';
 import { sizes } from './sizes';
 
 const styles = StyleSheet.create({
-  screenPadding: {
-    paddingVertical: sizes['7xl'],
-    paddingHorizontal: sizes['5xl'],
-  },
-  screenHorizontalPadding: {
-    paddingHorizontal: sizes['5xl'],
+  defaultScreen: {
+    height: '100%',
+    backgroundColor: palette.background,
   },
   screen: {
     paddingVertical: sizes['7xl'],
     paddingHorizontal: sizes['5xl'],
     height: '100%',
     backgroundColor: palette.background,
+  },
+  screenHeaderPadding: {
+    paddingTop: 80,
+  },
+  screenPadding: {
+    paddingVertical: sizes['7xl'],
+    paddingHorizontal: sizes['5xl'],
+  },
+  screenHorizontalPadding: {
+    paddingHorizontal: sizes['5xl'],
   },
   horizontalContainer: {
     flexDirection: 'row',
@@ -24,6 +31,9 @@ const styles = StyleSheet.create({
   },
   flexEnd: {
     alignItems: 'flex-end',
+  },
+  center: {
+    alignItems: 'center',
   },
   headerContainer: {
     flexDirection: 'row',
@@ -48,9 +58,14 @@ const styles = StyleSheet.create({
   hugeVerticalPadding: {
     paddingVertical: sizes['11xl'],
   },
-  divider: {
+  square: {
     width: sizes['5xl'],
     height: sizes['5xl'],
+  },
+  divider: {
+    height: 1,
+    backgroundColor: palette.gray,
+    marginVertical: sizes.lg,
   },
   flex: {
     flex: 1,
@@ -125,6 +140,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '80%',
     marginBottom: -sizes.lg,
+  },
+  cartImage: {
+    width: 150,
+    height: 150,
   },
 });
 

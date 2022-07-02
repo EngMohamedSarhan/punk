@@ -10,7 +10,7 @@ const TabBar: FC<BottomTabBarProps> = memo(
   ({ navigation, state: { index } }) => {
     const renderTabs = () =>
       tabBarIcons.map(({ sharp, outline, name, isGradient }, i) => {
-        const isFocused = index === 0 && i === 0;
+        const isFocused = (index === 0 && i === 0) || (index === 2 && i === 3);
 
         return (
           <IconButton

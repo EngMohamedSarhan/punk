@@ -10,7 +10,7 @@ import {
 import { PRODUCT_SCREEN_NAME } from '../../constants/screens';
 import { INavigationProp, IProduct } from '../../constants/types';
 import { DOLLAR_UNICODE } from '../../constants/unicodes';
-import NotificationContext from '../../context/NotificationContext';
+import CartContext from '../../context/CartContext';
 import ProductContext from '../../context/ProductContext';
 import { sizes } from '../../styles/sizes';
 import styles from '../../styles/styles';
@@ -22,17 +22,16 @@ export interface IProductCardProps
     ViewStyle,
     INavigationProp {
   product: IProduct;
+  category?: string;
 }
 
 const ProductCard: FC<IProductCardProps> = memo(
-  ({ product, navigation, style, ...props }) => {
+  ({ product, navigation, style, category = 'Beer', ...props }) => {
     const { image_url, name, ebc } = product;
-    const { pushNotification } = useContext(NotificationContext)!;
     const { setProduct } = useContext(ProductContext)!;
+    const { pushCart } = useContext(CartContext)!;
 
-    const handleCart = () => {
-      pushNotification('Added to cart successfully.');
-    };
+    const handleCart = () => pushCart({ ...product, quantity: 1 });
 
     const handlePress = () => {
       setProduct(product);
@@ -56,7 +55,7 @@ const ProductCard: FC<IProductCardProps> = memo(
             {name}
           </Typography>
           <Typography size="sm" marginTop={sizes.md}>
-            Beer
+            {category}
           </Typography>
           <Typography
             fontColor="primary"

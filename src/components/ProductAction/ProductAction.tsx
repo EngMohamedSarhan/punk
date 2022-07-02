@@ -1,5 +1,6 @@
 import React, { FC, memo } from 'react';
-import { View, ViewProps } from 'react-native';
+import { GestureResponderEvent, View, ViewProps } from 'react-native';
+
 import { DOLLAR_UNICODE } from '../../constants/unicodes';
 import { sizes } from '../../styles/sizes';
 import styles from '../../styles/styles';
@@ -9,10 +10,11 @@ import Typography from '../Typography/Typography';
 
 export interface IProductActionProps extends ViewProps {
   price?: number;
+  onPress?(event: GestureResponderEvent): void;
 }
 
 const ProductAction: FC<IProductActionProps> = memo(
-  ({ price, style, ...props }) => (
+  ({ price, style, onPress, ...props }) => (
     <View
       {...props}
       style={[
@@ -45,6 +47,7 @@ const ProductAction: FC<IProductActionProps> = memo(
             style={{ marginLeft: sizes.lg }}
           />
         }
+        onPress={onPress}
       />
     </View>
   )
