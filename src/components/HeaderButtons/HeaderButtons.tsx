@@ -19,7 +19,14 @@ const HeaderButtons: FC<IHeaderButtonsProps> = memo(
     style,
     ...props
   }) => (
-    <View {...props} style={[styles.headerContainer, style]}>
+    <View
+      {...props}
+      style={[
+        styles.headerContainer,
+        children || buttonsProps ? styles.fullWidth : {},
+        style,
+      ]}
+    >
       <IconButton
         variant="square"
         color="primary"

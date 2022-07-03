@@ -38,6 +38,9 @@ const styles = StyleSheet.create({
   center: {
     alignItems: 'center',
   },
+  fullWidth: {
+    width: '100%',
+  },
   centerContent: {
     justifyContent: 'center',
   },
@@ -45,9 +48,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     position: 'absolute',
-    marginVertical: sizes['7xl'],
-    marginHorizontal: sizes['5xl'],
-    width: '100%',
+    paddingTop: sizes['7xl'],
+    paddingHorizontal: sizes['5xl'],
     zIndex: 2,
   },
   notificationsContainer: {
