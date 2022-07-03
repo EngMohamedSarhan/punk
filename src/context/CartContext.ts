@@ -3,12 +3,12 @@ import { ICartItem } from '../constants/types';
 
 export interface ICartContext {
   cart: ICartItem[];
-  pushCart(item: ICartItem): void;
+  pushCart(item: ICartItem): boolean;
   removeCart(id: number): void;
   incQuantity(id: number): void;
   decQuantity(id: number): void;
   handleRemove(i: number): void;
-  handleIncrement(i: number): void;
+  handleIncrement(i: number): boolean;
   handleDecrement(i: number): void;
 }
 

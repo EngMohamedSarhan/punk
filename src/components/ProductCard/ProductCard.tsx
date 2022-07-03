@@ -6,11 +6,13 @@ import {
   ViewProps,
   ViewStyle,
 } from 'react-native';
+import { ADD_TO_CART_NC, MAX_QUANTITY_NC } from '../../constants/notifications';
 
 import { PRODUCT_SCREEN_NAME } from '../../constants/screens';
 import { INavigationProp, IProduct } from '../../constants/types';
 import { DOLLAR_UNICODE } from '../../constants/unicodes';
 import CartContext from '../../context/CartContext';
+import NotificationContext from '../../context/NotificationContext';
 import ProductContext from '../../context/ProductContext';
 import { sizes } from '../../styles/sizes';
 import styles from '../../styles/styles';
@@ -28,10 +30,15 @@ export interface IProductCardProps
 const ProductCard: FC<IProductCardProps> = memo(
   ({ product, navigation, style, category = 'Beer', ...props }) => {
     const { image_url, name, ebc } = product;
+    const { pushNotification } = useContext(NotificationContext)!;
     const { setProduct } = useContext(ProductContext)!;
     const { pushCart } = useContext(CartContext)!;
 
-    const handleCart = () => pushCart({ ...product, quantity: 1 });
+    const handleCart = () => {
+      const isAdded = pushCart({ ...product, quantity: 1 });
+
+      pushNotification(isAdded ? ADD_TO_CART_NC : MAX_QUANTITY_NC);
+    };
 
     const handlePress = () => {
       setProduct(product);

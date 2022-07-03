@@ -18,7 +18,7 @@ const CartScreen: FC<INavigationProp> = memo(({ navigation }) => {
 
   const renderSeparator = () => <View style={styles.divider} />;
 
-  const renderEmpty = () => <Error title=" Your Cart is Empty!" />;
+  const renderEmpty = () => <Error isAnimated title=" Your Cart is Empty!" />;
 
   const renderFooter = () =>
     cart.length ? <CartFooter style={[styles.screenPadding]} /> : null;

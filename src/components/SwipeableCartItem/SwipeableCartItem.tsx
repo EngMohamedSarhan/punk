@@ -6,7 +6,9 @@ import {
   Swipeable,
 } from 'react-native-gesture-handler';
 
+import { REMOVE_FROM_CART_NC } from '../../constants/notifications';
 import CartContext from '../../context/CartContext';
+import NotificationContext from '../../context/NotificationContext';
 import CartItem, { ICartItemProps } from '../CartItem/CartItem';
 import SwipeableDeleteAction from '../SwipeableDeleteAction/SwipeableDeleteAction';
 
@@ -15,6 +17,7 @@ export interface ISwipeableCartItemProps extends ICartItemProps {
 }
 
 const SwipeableCartItem: FC<ICartItemProps> = memo(({ index, ...props }) => {
+  const { pushNotification } = useContext(NotificationContext)!;
   const { handleRemove } = useContext(CartContext)!;
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -23,8 +26,10 @@ const SwipeableCartItem: FC<ICartItemProps> = memo(({ index, ...props }) => {
     drag: Animated.AnimatedInterpolation
   ) => <SwipeableDeleteAction iconStartX={-60} dragAnimatedValue={drag} />;
 
-  const handleAnimation = () => setIsCollapsed(true);
-
+  const handleAnimation = () => {
+    setIsCollapsed(true);
+    pushNotification(REMOVE_FROM_CART_NC);
+  };
   const handleDelete = () => handleRemove(index);
 
   return (
