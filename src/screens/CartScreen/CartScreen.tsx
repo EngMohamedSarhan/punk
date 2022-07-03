@@ -20,7 +20,8 @@ const CartScreen: FC<INavigationProp> = memo(({ navigation }) => {
 
   const renderEmpty = () => <Error title=" Your Cart is Empty!" />;
 
-  const renderFooter = () => <CartFooter style={[styles.screenPadding]} />;
+  const renderFooter = () =>
+    cart.length ? <CartFooter style={[styles.screenPadding]} /> : null;
 
   const renderItem = (item: ListRenderItemInfo<ICartItem>) => (
     <SwipeableCartItem
