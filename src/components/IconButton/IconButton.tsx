@@ -65,6 +65,7 @@ const IconButton: FC<IIconButtonProps> = forwardRef<View, IIconButtonProps>(
           styles.iconButton,
           {
             ...(variant === 'square' && {
+              elevation: sizes.sm,
               backgroundColor: palette.white,
               paddingHorizontal: sizes.xxl,
               borderRadius: sizes.xxl,
@@ -108,7 +109,12 @@ const IconButton: FC<IIconButtonProps> = forwardRef<View, IIconButtonProps>(
         end={{ x: 1, y: 0.5 }}
         colors={[palette.green, palette.primary]}
         {...gradientProps}
-        style={[styles.gradientIconButton, gradientProps?.style]}
+        style={[
+          styles.gradientIconButton,
+          props,
+          { elevation: sizes.sm },
+          gradientProps?.style,
+        ]}
       >
         {renderContent()}
       </LinearGradient>

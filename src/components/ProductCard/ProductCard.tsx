@@ -77,6 +77,7 @@ const ProductCard: FC<IProductCardProps> = memo(
             name="add"
             iconSize="md"
             color="white"
+            elevation={sizes.sm}
             style={styles.productButton}
             onPress={handleCart}
           />

@@ -4,6 +4,7 @@ import {
   TextStyle,
   TouchableOpacity,
   TouchableOpacityProps,
+  View,
   ViewProps,
   ViewStyle,
 } from 'react-native';
@@ -47,6 +48,7 @@ const Button: FC<IButtonProps> = memo(
     textStyle,
     textDecorationLine,
     gradientProps,
+    elevation = sizes.sm,
     alignSelf = 'flex-start',
     width = isFullWidth ? '100%' : undefined,
     paddingVertical = sizes['3xl'],
@@ -61,41 +63,44 @@ const Button: FC<IButtonProps> = memo(
     ...props
   }) => (
     <TouchableOpacity activeOpacity={0.7} {...props}>
-      <LinearGradient
-        start={{ x: 0, y: 0.5 }}
-        end={{ x: 1, y: 0.5 }}
-        colors={[palette.green, palette.primary]}
-        {...gradientProps}
-        style={[
-          props,
-          style,
-          gradientProps?.style,
-          {
-            paddingVertical,
-            paddingHorizontal,
-            flexDirection,
-            justifyContent,
-            alignItems,
-            alignSelf,
-            width,
-            borderRadius,
-          },
-        ]}
-      >
-        {startAdornment}
-        <Typography
-          textTransform={textTransform}
-          textDecorationLine={textDecorationLine}
-          fontWeight="800"
-          textAlign="center"
-          fontColor={fontColor}
-          size={fontSize}
-          style={textStyle}
+      <View>
+        <LinearGradient
+          start={{ x: 0, y: 0.5 }}
+          end={{ x: 1, y: 0.5 }}
+          colors={[palette.green, palette.primary]}
+          {...gradientProps}
+          style={[
+            props,
+            style,
+            gradientProps?.style,
+            {
+              elevation,
+              paddingVertical,
+              paddingHorizontal,
+              flexDirection,
+              justifyContent,
+              alignItems,
+              alignSelf,
+              width,
+              borderRadius,
+            },
+          ]}
         >
-          {title}
-        </Typography>
-        {endAdornment}
-      </LinearGradient>
+          {startAdornment}
+          <Typography
+            textTransform={textTransform}
+            textDecorationLine={textDecorationLine}
+            fontWeight="800"
+            textAlign="center"
+            fontColor={fontColor}
+            size={fontSize}
+            style={textStyle}
+          >
+            {title}
+          </Typography>
+          {endAdornment}
+        </LinearGradient>
+      </View>
     </TouchableOpacity>
   )
 );

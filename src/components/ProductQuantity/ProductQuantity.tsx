@@ -58,6 +58,7 @@ export const decButtonProps: IIconButtonProps = {
   name: 'remove',
   color: 'primary',
   padding: 0,
+  elevation: sizes.sm,
   backgroundColor: palette.lightGreen,
   style: styles.smIconButton,
 };
