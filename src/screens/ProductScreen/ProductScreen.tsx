@@ -9,9 +9,11 @@ import ProductQuantity from '../../components/ProductQuantity/ProductQuantity';
 import ScreenLayout from '../../components/ScreenLayout/ScreenLayout';
 import StarRating from '../../components/StarRating/StarRating';
 import Typography from '../../components/Typography/Typography';
+import { ADD_TO_CART_NC, MAX_QUANTITY_NC } from '../../constants/notifications';
 import { CART_SCREEN_NAME } from '../../constants/screens';
 import { INavigationProp, IProduct } from '../../constants/types';
 import CartContext from '../../context/CartContext';
+import NotificationContext from '../../context/NotificationContext';
 import ProductContext from '../../context/ProductContext';
 import { palette } from '../../styles/palette';
 import { sizes } from '../../styles/sizes';
@@ -21,6 +23,7 @@ const ProductScreen: FC<INavigationProp> = memo(({ navigation }) => {
   const containerRef = useRef() as MutableRefObject<ScrollView>;
   const quantityRef = useRef(1);
   const productRef = useRef<IProduct>();
+  const { pushNotification } = useContext(NotificationContext)!;
   const { product } = useContext(ProductContext)!;
   const { pushCart } = useContext(CartContext)!;
   const { image_url, name, description, ebc } = product!;
@@ -37,8 +40,11 @@ const ProductScreen: FC<INavigationProp> = memo(({ navigation }) => {
     productRef.current = product;
   };
 
-  const handleCart = () =>
-    pushCart({ ...product!, quantity: quantityRef.current });
+  const handleCart = () => {
+    const isAdded = pushCart({ ...product!, quantity: quantityRef.current });
+
+    pushNotification(isAdded ? ADD_TO_CART_NC : MAX_QUANTITY_NC);
+  };
 
   useFocusEffect(handleFocus);
 

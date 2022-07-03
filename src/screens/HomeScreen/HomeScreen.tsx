@@ -19,7 +19,13 @@ const HomeScreen: FC<INavigationProp> = memo(({ navigation }) => {
 
   const handleKeyExtractor = (item: IProduct) => item.id.toString();
 
-  const handleProducts = () => getProducts();
+  const handleProducts = () => {
+    if (isLoading) {
+      return;
+    }
+
+    getProducts();
+  };
 
   const renderSeparator = () => <View style={styles.square} />;
 
