@@ -19,7 +19,7 @@ yarn run android
 
 ## Screenshots
 
-![Home](./screenshots/Capture.PNG)
-![SnackBar](./screenshots/Capture-1.PNG)
-![Product](./screenshots/Capture-2.PNG)
+![Home](./screenshots/Capture.png)
+![SnackBar](./screenshots/Capture-1.png)
+![Product](./screenshots/Capture-2.png)
 ![Cart](./screenshots/Capture-3.png)
